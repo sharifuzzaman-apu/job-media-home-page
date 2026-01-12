@@ -39,7 +39,7 @@ export default function HeroSearch() {
       {/* Search */}
       <div className="max-w-xl lg:max-w-2xl mb-4">
         <form
-          className="relative flex items-center bg-white rounded-3xl shadow-lg px-4 py-3 w-full"
+          className="relative flex items-center bg-white rounded-4xl shadow-lg px-4 py-3 w-full"
           onSubmit={(e) => {
             e.preventDefault();
             if (keyword.trim()) {
@@ -57,9 +57,7 @@ export default function HeroSearch() {
           />
           <Button
             type="submit"
-            variant="default"
-            size="md"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-2xl px-6 py-2 font-semibold"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#18b6f6] text-white font-bold px-6 py-2 rounded-full shadow-lg flex items-center"
             disabled={!keyword.trim()}
           >
             Search Jobs <ChevronRight className="ml-1 w-4 h-4" />

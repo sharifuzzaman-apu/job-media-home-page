@@ -1,25 +1,35 @@
-import React from 'react';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/Badge';
+import { Briefcase } from 'lucide-react';
 
 interface CategoryCardProps {
-  title: string;
-  icon?: React.ReactNode;
-  onClick?: () => void;
+  id: number;
+  name: string;
+  jobsCount: number;
+  description?: string;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({
-  title,
-  icon,
-  onClick,
-}) => {
+export function CategoryCard({
+  id,
+  name,
+  jobsCount,
+  description,
+}: CategoryCardProps) {
   return (
-    <div
-      className="flex flex-col items-center justify-center gap-2 rounded-lg border p-4 cursor-pointer hover:shadow-lg transition animate-cardLift"
-      onClick={onClick}
+    <Link
+      href={`/jobs?category=${id}&name=${name}`}
+      className="group flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 transition hover:shadow-md"
     >
-      {icon && <div className="mb-2 text-3xl">{icon}</div>}
-      <span className="text-base font-semibold text-gray-800">{title}</span>
-    </div>
+      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-gray-600">
+        {/* Replace with dedicated icon logic as needed */}
+        <Briefcase className="h-5 w-5" />
+      </div>
+      <div>
+        <p className="text-base font-medium text-gray-900">{name}</p>
+        <Badge variant="secondary" className="mt-1">
+          {jobsCount} {jobsCount === 1 ? 'Job' : 'Jobs'} Available
+        </Badge>
+      </div>
+    </Link>
   );
-};
-
-export default CategoryCard;
+}

@@ -1,4 +1,4 @@
-import Header from '@/components/layout/header/Header';
+import HeaderPage from './header/page';
 
 export default function HomeLayout({
   children,
@@ -7,7 +7,7 @@ export default function HomeLayout({
 }) {
   return (
     <>
-      <Header />
+      <HeaderPage />
       <main>{children}</main>
     </>
   );
