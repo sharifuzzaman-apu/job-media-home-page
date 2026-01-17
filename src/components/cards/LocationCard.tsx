@@ -12,20 +12,31 @@ const LocationCard: React.FC<LocationCardProps> = ({
   image,
   onClick,
 }) => {
+  const safeImage =
+    image?.startsWith('/') || image?.startsWith('http') ? image : '/city.png';
+
   return (
     <div
-      className="relative flex items-center justify-center rounded-2xl overflow-hidden border cursor-pointer hover:shadow-lg transition animate-cardLift"
       onClick={onClick}
+      className="relative h-[220px] cursor-pointer overflow-hidden rounded-2xl border hover:shadow-2xl transition"
     >
       <Image
-        src={image || '/city.png'}
-        width={700}
-        height={320}
-        className="w-full h-full object-cover"
+        src={safeImage}
         alt={title}
+        fill
+        sizes="(max-width: 768px) 100vw, 25vw"
+        className="object-cover"
+        priority={false}
       />
-      <div className="absolute bottom-0 left-0 w-full py-6 bg-white/80">
-        <h4 className="text-2xl font-bold text-center text-primary">{title}</h4>
+
+      {/* Overlay */}
+      <div className="absolute inset-x-0 bottom-0 bg-black/40 py-4">
+        <h4 className="text-xl font-semibold text-center text-white">
+          {title}
+        </h4>
+        <p className="text-xs text-center text-white/80">
+          Explore Available Positions
+        </p>
       </div>
     </div>
   );
