@@ -3,7 +3,7 @@
 import React from 'react';
 import SectionTitle from '@/components/ui/SectionTitle';
 import LocationCard from '@/components/cards/LocationCard';
-import { locations } from '@/data/location';
+import { locations } from '@/data/locations';
 
 export default function JobsByLocationSection() {
   return (
