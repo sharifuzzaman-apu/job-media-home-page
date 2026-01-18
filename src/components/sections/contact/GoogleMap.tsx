@@ -2,8 +2,8 @@
 
 const GoogleMap = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full">
-      <p className="mb-4 text-2xl font-bold text-primary">
+    <div className="flex flex-col items-center justify-center w-full h-1/2 my-auto">
+      <p className="mb-4 text-2xl font-bold text-blue-700">
         Find us on Google Map
       </p>
 
