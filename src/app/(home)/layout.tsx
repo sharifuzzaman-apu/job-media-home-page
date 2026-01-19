@@ -1,4 +1,5 @@
 import HeaderPage from './header/page';
+import FooterPage from './footer/page';
 
 export default function HomeLayout({
   children,
@@ -9,6 +10,7 @@ export default function HomeLayout({
     <>
       <HeaderPage />
       <main>{children}</main>
+      <FooterPage />
     </>
   );
 }

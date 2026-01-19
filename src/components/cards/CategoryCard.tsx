@@ -9,19 +9,13 @@ interface CategoryCardProps {
   description?: string;
 }
 
-export function CategoryCard({
-  id,
-  name,
-  jobsCount,
-  description,
-}: CategoryCardProps) {
+export function CategoryCard({ id, name, jobsCount }: CategoryCardProps) {
   return (
     <Link
       href={`/jobs?category=${id}&name=${name}`}
       className="group flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 transition hover:shadow-md"
     >
       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-gray-600">
-        {/* Replace with dedicated icon logic as needed */}
         <Briefcase className="h-5 w-5" />
       </div>
       <div>

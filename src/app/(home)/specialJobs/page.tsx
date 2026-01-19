@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useTabs } from '@/hooks/useTabs';
 import PrivateJobs from '@/components/sections/jobs/SpecialJobs/PrivateJobs';
 import GovtJobs from '@/components/sections/jobs/SpecialJobs/GovtJobs';
 import ForeignJobs from '@/components/sections/jobs/SpecialJobs/ForeignJobs';
 
 const SpecialJobsTabs = () => {
-  const [activeTab, setActiveTab] = useState<
-    'private' | 'government' | 'foreign'
-  >('private');
+  const tabKeys = ['private', 'government', 'foreign'] as const;
+  const { activeTab, changeTab } = useTabs(tabKeys, 'private');
 
   return (
     <section className="bg-white py-16">
@@ -26,7 +26,7 @@ const SpecialJobsTabs = () => {
                   ? 'bg-blue-500 text-white'
                   : 'bg-white hover:bg-gray-100 text-gray-700'
               }`}
-              onClick={() => setActiveTab('private')}
+              onClick={() => changeTab('private')}
             >
               Private Jobs
             </button>
@@ -36,7 +36,7 @@ const SpecialJobsTabs = () => {
                   ? 'bg-blue-500 text-white'
                   : 'bg-white hover:bg-gray-100 text-gray-700'
               }`}
-              onClick={() => setActiveTab('government')}
+              onClick={() => changeTab('government')}
             >
               Government Jobs
             </button>
@@ -46,7 +46,7 @@ const SpecialJobsTabs = () => {
                   ? 'bg-blue-500 text-white'
                   : 'bg-white hover:bg-gray-100 text-gray-700'
               }`}
-              onClick={() => setActiveTab('foreign')}
+              onClick={() => changeTab('foreign')}
             >
               Foreign Jobs
             </button>

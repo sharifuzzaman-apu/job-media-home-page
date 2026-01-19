@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { usePagination } from '@/hooks/usePagination';
 import JobCard from '@/components/cards/JobCard';
 import { hotJobs } from '@/data/hotJobs';
 import { Pagination } from '@/components/ui/Pagination';
@@ -8,11 +9,12 @@ import { Pagination } from '@/components/ui/Pagination';
 const PAGE_SIZE = 4;
 
 const HotJobsSection = () => {
-  const [page, setPage] = useState(1);
-
-  const totalPages = Math.ceil(hotJobs.length / PAGE_SIZE);
-  const start = (page - 1) * PAGE_SIZE;
-  const jobs = hotJobs.slice(start, start + PAGE_SIZE);
+  const {
+    currentPage: page,
+    setCurrentPage: setPage,
+    totalPages,
+    paginatedData: jobs,
+  } = usePagination(hotJobs, PAGE_SIZE);
 
   return (
     <section className="bg-white  py-16">

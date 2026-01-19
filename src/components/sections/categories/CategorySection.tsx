@@ -1,20 +1,21 @@
 'use client';
 import { useState } from 'react';
+import { usePagination } from '@/hooks/usePagination';
 import { categories as allCategories } from '@/data/categories';
 import CategoryGrid from './CategoryGrid';
 import { Pagination } from '@/components/ui/Pagination';
 import { Skeleton } from '@/components/ui/Skeleton';
 import SectionTitle from '@/components/ui/SectionTitle';
 
-const PAGE_SIZE = 12; // adjust to match your design grid
+const PAGE_SIZE = 12;
 
 export default function CategorySection() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(allCategories.length / PAGE_SIZE);
-  const paginatedCategories = allCategories.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE
-  );
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    paginatedData: paginatedCategories,
+  } = usePagination(allCategories, PAGE_SIZE);
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePageChange = (page: number) => {

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { usePagination } from '@/hooks/usePagination';
 import JobCard from '@/components/cards/JobCard';
 import { foreignJobs } from '@/data/foreignJobs';
 import { Pagination } from '@/components/ui/Pagination';
@@ -8,10 +9,12 @@ import { Pagination } from '@/components/ui/Pagination';
 const PAGE_SIZE = 8;
 
 const ForeignJobs = () => {
-  const [page, setPage] = useState(1);
-  const totalPages = Math.ceil(foreignJobs.length / PAGE_SIZE);
-  const start = (page - 1) * PAGE_SIZE;
-  const jobs = foreignJobs.slice(start, start + PAGE_SIZE);
+  const {
+    currentPage: page,
+    setCurrentPage: setPage,
+    totalPages,
+    paginatedData: jobs,
+  } = usePagination(foreignJobs, PAGE_SIZE);
 
   return (
     <div>

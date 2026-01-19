@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useTabs } from '@/hooks/useTabs';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/Button';
 
@@ -14,10 +15,13 @@ interface TabsProps {
 }
 
 export const Tabs: React.FC<TabsProps> = ({ tabs, selected, onChange }) => {
-  const [active, setActive] = useState(selected || tabs[0].value);
+  const { activeTab, changeTab } = useTabs(
+    tabs.map((tab) => tab.value),
+    selected as string | undefined,
+  );
 
   const handleClick = (value: string) => {
-    setActive(value);
+    changeTab(value);
     if (onChange) onChange(value);
   };
 
@@ -27,7 +31,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, selected, onChange }) => {
         <Button
           key={tab.value}
           size="sm"
-          variant={active === tab.value ? 'default' : 'outline'}
+          variant={activeTab === tab.value ? 'default' : 'outline'}
           onClick={() => handleClick(tab.value)}
         >
           {tab.label}

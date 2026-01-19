@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { Send } from 'lucide-react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
@@ -15,6 +14,7 @@ const Mail = () => {
 
       <div className="mt-4 flex w-full max-w-[460px] items-center  justify-center gap-2 px-4">
         <Input
+          id="email"
           type="email"
           placeholder="Your Email"
           className="rounded-full text-center"

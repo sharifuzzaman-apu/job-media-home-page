@@ -24,7 +24,6 @@ interface JobCardProps {
 const JobCard: React.FC<JobCardProps> = ({
   title,
   company,
-  companyLogo,
   location,
   salary,
   meta,
@@ -34,10 +33,11 @@ const JobCard: React.FC<JobCardProps> = ({
     <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-lg transition flex flex-col min-h-[340px]">
       {/* Logo */}
       <div className="flex justify-start mb-2"></div>
-      {/* Title & Company */}
+      {/* Title */}
       <h3 className="text-base font-semibold text-sky-700 leading-tight mb-1">
         {title}
       </h3>
+      {/* Company */}
       <p className="text-sm font-medium text-sky-500 mb-2">{company}</p>
 
       {/* Location */}

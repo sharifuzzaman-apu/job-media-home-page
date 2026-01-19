@@ -17,7 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="flex items-center gap-2">
-      {/* Previous */}
+      {/* back */}
       <Button
         size="sm"
         variant="outline"
@@ -27,7 +27,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <ChevronLeft className="h-4 w-4" />
       </Button>
 
-      {/* Page numbers */}
+      {/* numbers */}
       {pages.map((page) => (
         <Button
           key={page}
@@ -39,7 +39,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         </Button>
       ))}
 
-      {/* Next */}
+      {/* forward */}
       <Button
         size="sm"
         variant="outline"

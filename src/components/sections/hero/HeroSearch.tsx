@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { useDebouncedValue } from '@/hooks/useDebouncedValue';
 import { useRouter } from 'next/navigation';
 import {
   Search,
@@ -32,6 +33,7 @@ const categories = [
 
 export default function HeroSearch() {
   const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebouncedValue(keyword, 300);
   const router = useRouter();
 
   return (
@@ -42,8 +44,8 @@ export default function HeroSearch() {
           className="relative flex items-center bg-white rounded-4xl shadow-lg px-4 py-3 w-full"
           onSubmit={(e) => {
             e.preventDefault();
-            if (keyword.trim()) {
-              router.push(`/search/${encodeURIComponent(keyword)}`);
+            if (debouncedKeyword.trim()) {
+              router.push(`/search/${encodeURIComponent(debouncedKeyword)}`);
             }
           }}
         >
